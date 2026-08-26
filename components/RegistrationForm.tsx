@@ -494,7 +494,7 @@ export default function RegistrationForm() {
             </span>
           </div>
           <span className="text-slate-400 text-[11px] font-medium hidden sm:inline">
-            Envoy: Syed Saimum Hasan
+            EUMUN 2026 · 8–10 Oct · Envoy: Syed Saimum Hasan
           </span>
         </div>
 

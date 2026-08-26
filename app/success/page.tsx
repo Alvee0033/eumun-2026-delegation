@@ -91,12 +91,12 @@ function SuccessContent() {
         {/* Conference Info & Referral Perk */}
         <div className="pt-4 flex flex-col gap-2.5 text-xs">
           <div className="flex items-center gap-2 text-slate-300 font-medium">
-            <Calendar className="w-4 h-4 text-indigo-400 shrink-0" />
-            <span>EUMUN 2026 Delegation</span>
+            <Calendar className="w-4 h-4 text-cyan-400 shrink-0" />
+            <span>Conference Dates: <strong className="text-slate-100 font-semibold">8–10 October 2026</strong></span>
           </div>
           <div className="flex items-center gap-2 text-slate-300 font-medium">
             <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-            <span>Representative: Syed Saimum Hasan</span>
+            <span>Campus Representative: Syed Saimum Hasan</span>
           </div>
 
           <div className="mt-1 p-2.5 rounded-xl bg-indigo-950/40 border border-indigo-800/40 text-[11px] text-indigo-200 leading-relaxed">

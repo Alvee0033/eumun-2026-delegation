@@ -11,9 +11,9 @@ import {
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'EUMUN 2026 — Delegate Registration | Campus Envoy Syed Saimum Hasan',
+  title: 'EUMUN 2026 (8–10 October) — Delegate Registration | Campus Envoy Syed Saimum Hasan',
   description:
-    'Official delegate registration for EUMUN 2026. Join aspiring diplomats from across the nation for three days of high-quality debate and intellectual exchange.',
+    'Official delegate registration for EUMUN 2026 (8–10 October 2026). Join aspiring diplomats from across the nation for three days of high-quality debate and intellectual exchange.',
 }
 
 export default function HomePage() {
@@ -35,7 +35,7 @@ export default function HomePage() {
             </div>
             <div>
               <span className="font-extrabold text-sm tracking-tight text-slate-100">EUMUN 2026</span>
-              <span className="text-[10px] block text-cyan-400 font-mono font-bold -mt-0.5">CAMPUS DELEGATION</span>
+              <span className="text-[10px] block text-cyan-400 font-mono font-bold -mt-0.5">CAMPUS DELEGATION · 8–10 OCT</span>
             </div>
           </div>
 
@@ -46,10 +46,10 @@ export default function HomePage() {
             </div>
             <Link
               href="/admin/login"
-              className="text-slate-400 hover:text-slate-200 p-1 rounded-lg hover:bg-slate-800 transition-colors"
-              title="Admin Access"
+              className="text-xs text-slate-400 hover:text-slate-200 transition-colors flex items-center gap-1 font-semibold p-1"
+              title="Admin Portal"
             >
-              <Lock className="w-3.5 h-3.5" />
+              <Lock className="w-3.5 h-3.5 text-slate-500 hover:text-indigo-400" />
             </Link>
           </div>
         </div>
@@ -65,16 +65,16 @@ export default function HomePage() {
               <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
               EUMUN 2026
             </span>
+            <span className="badge bg-slate-900/80 border border-slate-800 text-slate-200 shadow-xs font-semibold">
+              <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+              8–10 October 2026
+            </span>
             <span className="badge bg-cyan-950/60 border border-cyan-700/50 text-cyan-300 shadow-xs font-mono font-bold">
               Fee: 3,550 BDT
             </span>
             <span className="badge bg-purple-950/60 border border-purple-700/50 text-purple-300 shadow-xs">
               <Award className="w-3.5 h-3.5 text-purple-400" />
               Delegation Scholarship
-            </span>
-            <span className="badge bg-slate-900/80 border border-slate-800 text-slate-300 shadow-xs">
-              <Calendar className="w-3.5 h-3.5 text-indigo-400" />
-              Official Delegation Cycle
             </span>
           </div>
 
@@ -84,12 +84,12 @@ export default function HomePage() {
               EUMUN 2026 Delegation Registration
             </h1>
             <p className="text-sm text-slate-400 mt-1.5 leading-relaxed font-medium">
-              Join aspiring diplomats, leaders, and changemakers for engaging debate, meaningful collaboration, and intellectual exchange.
+              Join aspiring diplomats, leaders, and changemakers for three days of engaging debate, meaningful collaboration, and intellectual exchange (8–10 October 2026).
             </p>
           </div>
 
           {/* ── Fee & Scholarship Perks Card ── */}
-          <div className="rounded-2xl border border-indigo-500/40 bg-gradient-to-br from-indigo-950/80 via-slate-900/90 to-cyan-950/80 p-5 shadow-glass backdrop-blur-xl flex flex-col gap-3 relative overflow-hidden">
+          <div className="rounded-2xl border border-indigo-500/40 bg-gradient-to-br from-indigo-950/80 via-slate-900/90 to-cyan-950/80 p-5 shadow-glass backdrop-blur-xl flex flex-col gap-3.5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-2xl rounded-full pointer-events-none" />
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
               <div className="flex items-center gap-2.5">
@@ -98,7 +98,14 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-slate-100">Registration Fee: 3,550 BDT</h3>
-                  <p className="text-xs text-slate-400">Official Delegate Participation Fee</p>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-xs text-slate-400">Official Delegate Participation Fee</span>
+                    <span className="text-slate-600">·</span>
+                    <span className="text-xs font-semibold text-cyan-300 flex items-center gap-1">
+                      <Calendar className="w-3 h-3 text-cyan-400" />
+                      8–10 October 2026
+                    </span>
+                  </div>
                 </div>
               </div>
               <div className="flex items-baseline gap-1.5 self-start sm:self-auto bg-slate-950/80 border border-cyan-500/30 px-3.5 py-1.5 rounded-xl shadow-inner">
@@ -141,7 +148,7 @@ export default function HomePage() {
                 &quot;Hello, I&#39;m <strong className="text-slate-100">Syed Saimum Hasan</strong>. I&#39;m honoured to inform you that I&#39;ll be serving as Campus Envoy for EUMUN 2026.&quot;
               </p>
               <p>
-                &quot;EUMUN 2026 will bring together aspiring diplomats, leaders, and changemakers from across the country for three days of engaging debate, meaningful collaboration, and intellectual exchange. The conference is designed to foster critical thinking, diplomacy, negotiation, and public speaking while addressing pressing global issues through high-quality committee sessions.&quot;
+                &quot;EUMUN 2026 will bring together aspiring diplomats, leaders, and changemakers from across the country for three days of engaging debate, meaningful collaboration, and intellectual exchange (<strong className="text-cyan-300 font-semibold">8–10 October 2026</strong>). The conference is designed to foster critical thinking, diplomacy, negotiation, and public speaking while addressing pressing global issues through high-quality committee sessions.&quot;
               </p>
               <p>
                 &quot;We would be honored to have you join us as a delegate and contribute your perspective. Should you require any information regarding registration or committees, please feel free to reach out to me directly.&quot;
