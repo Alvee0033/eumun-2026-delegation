@@ -33,14 +33,29 @@ export function KPICard({
   value,
   sub,
   accent = false,
-  icon: Icon,
+  iconType,
 }: {
   label: string
   value: number | string
   sub?: string
   accent?: boolean
-  icon?: React.ComponentType<{ className?: string }>
+  iconType?: 'users' | 'clock' | 'calendar' | 'check' | 'trending' | 'layers'
 }) {
+  const IconComponent =
+    iconType === 'users'
+      ? Users
+      : iconType === 'clock'
+        ? Clock
+        : iconType === 'calendar'
+          ? Clock
+          : iconType === 'check'
+            ? CheckCircle2
+            : iconType === 'trending'
+              ? TrendingUp
+              : iconType === 'layers'
+                ? Layers
+                : null
+
   return (
     <div
       className={`rounded-2xl border p-5 transition-all duration-200 relative overflow-hidden backdrop-blur-xl
@@ -53,10 +68,10 @@ export function KPICard({
         <p className={`text-[11px] font-bold uppercase tracking-wider ${accent ? 'text-indigo-100' : 'text-slate-400'}`}>
           {label}
         </p>
-        {Icon && (
+        {IconComponent && (
           <div className={`w-8 h-8 rounded-xl flex items-center justify-center
             ${accent ? 'bg-white/20 text-white' : 'bg-indigo-950/60 text-indigo-400 border border-indigo-800/40'}`}>
-            <Icon className="w-4 h-4" />
+            <IconComponent className="w-4 h-4" />
           </div>
         )}
       </div>

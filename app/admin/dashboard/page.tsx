@@ -174,25 +174,25 @@ export default async function DashboardPage() {
                 label="Total Applications"
                 value={stats.total}
                 accent
-                icon={Users}
+                iconType="users"
               />
               <KPICard
                 label="Today's Submissions"
                 value={stats.today}
                 sub="logged in last 24h"
-                icon={Clock}
+                iconType="clock"
               />
               <KPICard
                 label="This Week"
                 value={stats.thisWeek}
                 sub="current cycle"
-                icon={Calendar}
+                iconType="calendar"
               />
               <KPICard
                 label="Pending Allocation"
                 value={pendingCount}
                 sub={`${confirmedCount} confirmed`}
-                icon={CheckCircle2}
+                iconType="check"
               />
             </div>
           </section>

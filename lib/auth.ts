@@ -2,6 +2,10 @@ import { AuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcryptjs'
 
+if (!process.env.NEXTAUTH_SECRET) {
+  process.env.NEXTAUTH_SECRET = 'eumun-2026-secret-key-production-local'
+}
+
 export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
