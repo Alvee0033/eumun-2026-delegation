@@ -71,7 +71,7 @@ export default function HomePage() {
             </span>
             <span className="badge bg-slate-900/80 border border-slate-800 text-slate-300 shadow-xs">
               <Award className="w-3.5 h-3.5 text-indigo-400" />
-              9 Committees
+              Committees Announcing Soon
             </span>
           </div>
 

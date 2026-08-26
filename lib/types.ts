@@ -1,18 +1,17 @@
 import { z } from 'zod'
 
 export const COMMITTEES = [
-  'UNSC (United Nations Security Council)',
-  'ICJ (International Court of Justice)',
-  'SPECPOL (Special Political and Decolonization Committee)',
-  'DISEC (Disarmament and International Security Committee)',
-  'IP (International Press)',
-  'BFIU (Bangladesh Financial Intelligence Unit)',
-  'UNHRC (United Nations Human Rights Council)',
-  'UNDP (United Nations Development Programme)',
-  'OPEC (Organization of the Petroleum Exporting Countries)',
+  'Open Allocation (To Be Decided Upon Official Release)',
+  'Crisis & Strategic Affairs',
+  'International Law & Justice',
+  'General Assembly & Disarmament',
+  'Human Rights & Humanitarian Affairs',
+  'Economics & Sustainable Development',
+  'International Press / Media (IP)',
+  'Specialized / National Body',
 ] as const
 
-export type Committee = (typeof COMMITTEES)[number]
+export type Committee = (typeof COMMITTEES)[number] | string
 
 export const ROLES = ['Delegate', 'Chair', 'IP Reporter', 'Crisis Director'] as const
 export type Role = (typeof ROLES)[number]
@@ -58,22 +57,20 @@ export const delegationSchema = z.object({
     .max(255, 'Email too long')
     .trim()
     .toLowerCase(),
+  committee_1st: z
+    .string()
+    .min(1, 'Committee preference is required')
+    .max(500, 'Preference too long')
+    .trim(),
+  committee_2nd: z.string().default('Open Allocation'),
+  preferred_role: z.string().default('Delegate'),
   mun_experience: z
     .string()
-    .min(10, 'Please provide at least a brief MUN experience description')
+    .min(2, 'Please provide your MUN experience (or write First Time)')
     .max(5000, 'Too long — max 5000 characters')
     .trim(),
-  committee_1st: z.enum(COMMITTEES, { errorMap: () => ({ message: 'Select your 1st committee preference' }) }),
-  committee_2nd: z.enum(COMMITTEES, { errorMap: () => ({ message: 'Select your 2nd committee preference' }) }),
-  preferred_role: z.enum(ROLES, { errorMap: () => ({ message: 'Select your preferred role' }) }),
   campus_envoy: z.string().default('Syed Saimum Hasan'),
-}).refine(
-  (data) => data.committee_1st !== data.committee_2nd,
-  {
-    message: '1st and 2nd committee preferences must be different',
-    path: ['committee_2nd'],
-  }
-)
+})
 
 export type DelegationInput = z.infer<typeof delegationSchema>
 
@@ -83,3 +80,4 @@ export interface Delegation extends DelegationInput {
   created_at: string
   updated_at: string
 }
+

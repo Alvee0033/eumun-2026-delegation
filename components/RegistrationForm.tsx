@@ -19,6 +19,7 @@ import {
   Loader2,
   Check,
   X,
+  Sparkles,
 } from 'lucide-react'
 import { COMMITTEES, ROLES, type Committee, type Role } from '@/lib/types'
 
@@ -32,15 +33,14 @@ interface CommitteeInfo {
 }
 
 const COMMITTEE_DETAILS: CommitteeInfo[] = [
-  { code: 'UNSC', name: 'Security Council', fullName: 'UNSC (United Nations Security Council)', type: 'Flagship Crisis' },
-  { code: 'ICJ', name: 'Court of Justice', fullName: 'ICJ (International Court of Justice)', type: 'Legal Procedures' },
-  { code: 'SPECPOL', name: 'Special Political', fullName: 'SPECPOL (Special Political and Decolonization Committee)', type: 'General Assembly' },
-  { code: 'DISEC', name: 'Disarmament & Security', fullName: 'DISEC (Disarmament and International Security Committee)', type: 'General Assembly' },
-  { code: 'IP', name: 'International Press', fullName: 'IP (International Press)', type: 'Journalism' },
-  { code: 'BFIU', name: 'Financial Intelligence', fullName: 'BFIU (Bangladesh Financial Intelligence Unit)', type: 'Specialized National' },
-  { code: 'UNHRC', name: 'Human Rights Council', fullName: 'UNHRC (United Nations Human Rights Council)', type: 'Human Rights' },
-  { code: 'UNDP', name: 'Development Programme', fullName: 'UNDP (United Nations Development Programme)', type: 'Sustainable Growth' },
-  { code: 'OPEC', name: 'Petroleum Countries', fullName: 'OPEC (Organization of the Petroleum Exporting Countries)', type: 'Economic Policy' },
+  { code: 'OPEN', name: 'Open Allocation (Decide Upon Official Release)', fullName: 'Open Allocation (To Be Decided Upon Official Release)', type: 'Flexible' },
+  { code: 'CRISIS', name: 'Crisis & Strategic Affairs', fullName: 'Crisis & Strategic Affairs', type: 'Flagship Crisis' },
+  { code: 'LEGAL', name: 'International Law & Justice', fullName: 'International Law & Justice', type: 'Legal Procedures' },
+  { code: 'GA', name: 'General Assembly & Disarmament', fullName: 'General Assembly & Disarmament', type: 'General Assembly' },
+  { code: 'HR', name: 'Human Rights & Humanitarian Affairs', fullName: 'Human Rights & Humanitarian Affairs', type: 'Human Rights' },
+  { code: 'ECON', name: 'Economics & Sustainable Development', fullName: 'Economics & Sustainable Development', type: 'Sustainable Growth' },
+  { code: 'IP', name: 'International Press & Media', fullName: 'International Press / Media (IP)', type: 'Journalism' },
+  { code: 'SPEC', name: 'Specialized & National Bodies', fullName: 'Specialized / National Body', type: 'Specialized' },
 ]
 
 const MONTHS = [
@@ -376,10 +376,8 @@ export default function RegistrationForm() {
       'phone',
       'whatsapp',
       'emergency_contact',
-      'mun_experience',
       'committee_1st',
-      'committee_2nd',
-      'preferred_role',
+      'mun_experience',
     ]
     const filledCount = requiredKeys.filter((k) => (form[k] || '').trim().length > 0).length
     return Math.round((filledCount / requiredKeys.length) * 100)
@@ -387,7 +385,7 @@ export default function RegistrationForm() {
 
   const personalDone = Boolean(form.name.trim() && form.department.trim() && form.dob && form.email.trim())
   const contactDone = Boolean(form.phone.trim() && form.whatsapp.trim() && form.emergency_contact.trim())
-  const munDone = Boolean(form.mun_experience.trim() && form.committee_1st && form.committee_2nd && form.preferred_role)
+  const munDone = Boolean(form.committee_1st.trim() && form.mun_experience.trim())
 
   function validate(tabOnly?: 'personal' | 'contact'): boolean {
     const errs: Errors = {}
@@ -413,16 +411,10 @@ export default function RegistrationForm() {
     }
 
     if (!tabOnly) {
-      if (!form.mun_experience.trim() || form.mun_experience.trim().length < 10)
-        errs.mun_experience = 'Please describe your MUN experience (min 10 characters)'
-      if (!form.committee_1st)
-        errs.committee_1st = 'Select your 1st committee preference'
-      if (!form.committee_2nd)
-        errs.committee_2nd = 'Select your 2nd committee preference'
-      if (form.committee_1st && form.committee_2nd && form.committee_1st === form.committee_2nd)
-        errs.committee_2nd = '1st and 2nd preferences must be different'
-      if (!form.preferred_role)
-        errs.preferred_role = 'Preferred role is required'
+      if (!form.committee_1st.trim())
+        errs.committee_1st = 'Please write your committee preference or type Open'
+      if (!form.mun_experience.trim())
+        errs.mun_experience = 'Please describe your MUN experience (or write First Time)'
     }
 
     setErrors((prev) => ({ ...prev, ...errs }))
@@ -716,74 +708,43 @@ export default function RegistrationForm() {
               <div>
                 <h2 className="text-base font-bold text-slate-100 flex items-center gap-2">
                   <Globe className="w-4 h-4 text-indigo-400" />
-                  Committee Preferences & MUN Record
+                  Committee Preference & Experience
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5">Select preferred committees and outline previous diplomatic background</p>
+                <p className="text-xs text-slate-400 mt-0.5">Please share your committee preferences and diplomatic background</p>
               </div>
               <span className="text-[11px] font-mono font-bold bg-indigo-950/80 text-indigo-300 px-2 py-0.5 rounded border border-indigo-800/50">Part 3/3</span>
             </div>
 
-            {/* Role Picker Chips */}
-            <div className="flex flex-col gap-2">
-              <label className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-300">
-                <Award className="w-3.5 h-3.5 text-indigo-400" />
-                <span>Preferred Conference Role</span>
-                <span className="text-rose-400">*</span>
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {ROLES.map((r) => {
-                  const isSelected = form.preferred_role === r
-                  return (
-                    <button
-                      key={r}
-                      type="button"
-                      onClick={() => set('preferred_role')(r)}
-                      className={`p-3 rounded-xl border text-xs font-bold transition-all text-center
-                        ${isSelected
-                          ? 'border-indigo-500 bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-neon-blue'
-                          : 'border-slate-800 bg-slate-900/80 text-slate-300 hover:border-slate-700 hover:bg-slate-800'
-                        }`}
-                    >
-                      {r}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* 1st Committee */}
-            <ModernCommitteePicker
-              title="1st Committee Preference"
-              name="committee_1st"
-              value={form.committee_1st}
-              onChange={set('committee_1st')}
-              disabledValue={undefined}
+            {/* 1. Committee Preference */}
+            <FormFieldWrapper
+              label="Committee Preference"
+              required
               error={errors.committee_1st}
-            />
+              hint="Preferred topics / fields or 'Open Allocation'"
+              icon={Globe}
+            >
+              <textarea
+                value={form.committee_1st}
+                onChange={(e) => set('committee_1st')(e.target.value)}
+                placeholder="Enter your committee preferences (e.g. Crisis, Security, Human Rights, Law, Economics, or 'Open to any committee allocation once released')..."
+                rows={3}
+                className={`input-field resize-none leading-relaxed ${errors.committee_1st ? 'input-field-error' : ''}`}
+              />
+            </FormFieldWrapper>
 
-            {/* 2nd Committee */}
-            <ModernCommitteePicker
-              title="2nd Committee Preference"
-              name="committee_2nd"
-              value={form.committee_2nd}
-              onChange={set('committee_2nd')}
-              disabledValue={form.committee_1st}
-              error={errors.committee_2nd}
-            />
-
-            {/* MUN Experience */}
+            {/* 2. MUN Experience */}
             <FormFieldWrapper
               label="Previous MUN Experiences"
               required
               error={errors.mun_experience}
-              hint="Conferences, committees, awards won"
+              hint="Conferences, awards, or 'First time'"
               icon={FileText}
             >
               <div className="relative">
                 <textarea
                   value={form.mun_experience}
                   onChange={(e) => set('mun_experience')(e.target.value)}
-                  placeholder="Detail your previous MUN participation, past conferences attended, committees, and any awards won. If this is your first conference, describe your motivation to participate..."
+                  placeholder="Detail your previous MUN participation, past conferences attended, committees, and any awards won. If this is your first conference, write 'First time MUNer'..."
                   rows={4}
                   className={`input-field resize-none leading-relaxed pb-6 ${errors.mun_experience ? 'input-field-error' : ''}`}
                 />

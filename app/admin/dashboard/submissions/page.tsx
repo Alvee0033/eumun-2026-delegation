@@ -287,7 +287,7 @@ export default function SubmissionsPage() {
               onChange={(e) => { setCommitteeFilter(e.target.value); setPage(1) }}
               className="input-field text-xs py-1.5 w-auto font-semibold cursor-pointer"
             >
-              <option value="">All 9 Committees</option>
+              <option value="">All Committees / Tracks</option>
               {COMMITTEES.map((c) => (
                 <option key={c} value={c} className="bg-slate-900 text-slate-100">{c.split('(')[0].trim()}</option>
               ))}
