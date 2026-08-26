@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#080c14] text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950 min-h-screen;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents iOS auto-zoom */
+  }
+
+  /* Custom colorful scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080c14;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-800 rounded-full hover:bg-indigo-600;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply w-full rounded-xl border border-slate-700/80 bg-slate-900/90 px-4 py-3 text-sm text-slate-100 placeholder-slate-500
+           transition-all duration-200 ease-out shadow-inner
+           focus:border-cyan-400 focus:bg-slate-900 focus:outline-none focus:ring-4 focus:ring-cyan-500/20
+           hover:border-slate-600
+           disabled:cursor-not-allowed disabled:bg-slate-950 disabled:text-slate-600;
+  }
+
+  .input-field-error {
+    @apply border-rose-500/90 bg-rose-950/25 text-rose-100 focus:border-rose-400 focus:ring-rose-500/20;
+  }
+
+  .label {
+    @apply block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-indigo-600/30
+           transition-all duration-200 ease-out
+           hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 hover:shadow-xl hover:shadow-indigo-500/40 hover:-translate-y-0.5
+           active:scale-[0.98] active:translate-y-0
+           focus:outline-none focus:ring-4 focus:ring-indigo-500/30
+           disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700/90 bg-slate-900/90 px-4 py-2.5 text-xs font-bold text-slate-200 shadow-sm
+           transition-all duration-200 ease-out
+           hover:bg-slate-800 hover:border-slate-600 hover:text-white
+           active:scale-[0.98]
+           focus:outline-none focus:ring-4 focus:ring-slate-700/30
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-800/80 bg-slate-900/75 p-6 backdrop-blur-xl shadow-glass;
+  }
+
+  .card-glow-blue {
+    @apply rounded-2xl border border-blue-500/30 bg-gradient-to-b from-blue-950/40 via-slate-900/80 to-slate-900/90 p-6 backdrop-blur-xl shadow-neon-blue;
+  }
+
+  .card-glow-purple {
+    @apply rounded-2xl border border-purple-500/30 bg-gradient-to-b from-purple-950/40 via-slate-900/80 to-slate-900/90 p-6 backdrop-blur-xl shadow-neon-purple;
+  }
+
+  .card-glow-cyan {
+    @apply rounded-2xl border border-cyan-500/30 bg-gradient-to-b from-cyan-950/40 via-slate-900/80 to-slate-900/90 p-6 backdrop-blur-xl shadow-neon-cyan;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-bold tracking-wide;
+  }
+
+  .glass-header {
+    @apply sticky top-0 z-40 border-b border-slate-800/90 bg-slate-950/85 backdrop-blur-xl shadow-md;
+  }
+}

@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: kumun_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: kumun
+      POSTGRES_PASSWORD: kumun2026
+      POSTGRES_DB: kumun_delegation
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./lib/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U kumun -d kumun_delegation']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kumun_app
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: postgres://kumun:kumun2026@db:5432/kumun_delegation
+      NEXTAUTH_SECRET: change-this-secret-in-production
+      NEXTAUTH_URL: http://localhost:3000
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: kumun2026
+      NODE_ENV: production
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
