@@ -71,10 +71,15 @@ function SuccessContent() {
           </div>
 
           <div className="flex items-start justify-between">
-            <span className="text-slate-400 font-medium">1st Committee Choice</span>
+            <span className="text-slate-400 font-medium">Committee Preference</span>
             <span className="font-bold text-indigo-300 text-right max-w-[180px] truncate" title={committee1}>
-              {committee1 ? (committee1.includes('(') ? committee1.split('(')[0].trim() : committee1) : 'General'}
+              {committee1 || 'Open Allocation'}
             </span>
+          </div>
+
+          <div className="flex items-start justify-between">
+            <span className="text-slate-400 font-medium">Registration Fee</span>
+            <span className="font-mono font-bold text-cyan-400 text-right">3,550 BDT</span>
           </div>
 
           <div className="flex items-start justify-between">
@@ -83,8 +88,8 @@ function SuccessContent() {
           </div>
         </div>
 
-        {/* Conference Info */}
-        <div className="pt-4 flex flex-col gap-2 text-xs">
+        {/* Conference Info & Referral Perk */}
+        <div className="pt-4 flex flex-col gap-2.5 text-xs">
           <div className="flex items-center gap-2 text-slate-300 font-medium">
             <Calendar className="w-4 h-4 text-indigo-400 shrink-0" />
             <span>EUMUN 2026 Delegation</span>
@@ -92,6 +97,10 @@ function SuccessContent() {
           <div className="flex items-center gap-2 text-slate-300 font-medium">
             <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
             <span>Representative: Syed Saimum Hasan</span>
+          </div>
+
+          <div className="mt-1 p-2.5 rounded-xl bg-indigo-950/40 border border-indigo-800/40 text-[11px] text-indigo-200 leading-relaxed">
+            <strong className="text-slate-100">🔥 Bring More Friends:</strong> If more delegates join our campus delegation, we will secure group scholarship benefits for our members!
           </div>
         </div>
       </div>

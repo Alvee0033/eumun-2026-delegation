@@ -506,6 +506,18 @@ export default function RegistrationForm() {
           />
         </div>
 
+        {/* Registration Fee & Group Scholarship Note */}
+        <div className="flex flex-wrap items-center justify-between gap-2 py-1.5 px-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-[11px]">
+          <div className="flex items-center gap-1.5 text-slate-300">
+            <span className="font-semibold text-slate-400">Registration Fee:</span>
+            <span className="font-mono font-bold text-cyan-400">3,550 BDT</span>
+          </div>
+          <div className="flex items-center gap-1 text-purple-300 font-medium">
+            <Sparkles className="w-3 h-3 text-purple-400" />
+            <span>Bring more friends to unlock Delegation Scholarship!</span>
+          </div>
+        </div>
+
         {/* Segmented Step Buttons */}
         <div className="grid grid-cols-3 gap-1.5 pt-1">
           <button

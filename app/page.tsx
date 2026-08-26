@@ -65,13 +65,16 @@ export default function HomePage() {
               <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
               EUMUN 2026
             </span>
+            <span className="badge bg-cyan-950/60 border border-cyan-700/50 text-cyan-300 shadow-xs font-mono font-bold">
+              Fee: 3,550 BDT
+            </span>
+            <span className="badge bg-purple-950/60 border border-purple-700/50 text-purple-300 shadow-xs">
+              <Award className="w-3.5 h-3.5 text-purple-400" />
+              Delegation Scholarship
+            </span>
             <span className="badge bg-slate-900/80 border border-slate-800 text-slate-300 shadow-xs">
               <Calendar className="w-3.5 h-3.5 text-indigo-400" />
               Official Delegation Cycle
-            </span>
-            <span className="badge bg-slate-900/80 border border-slate-800 text-slate-300 shadow-xs">
-              <Award className="w-3.5 h-3.5 text-indigo-400" />
-              Committees Announcing Soon
             </span>
           </div>
 
@@ -83,6 +86,34 @@ export default function HomePage() {
             <p className="text-sm text-slate-400 mt-1.5 leading-relaxed font-medium">
               Join aspiring diplomats, leaders, and changemakers for engaging debate, meaningful collaboration, and intellectual exchange.
             </p>
+          </div>
+
+          {/* ── Fee & Scholarship Perks Card ── */}
+          <div className="rounded-2xl border border-indigo-500/40 bg-gradient-to-br from-indigo-950/80 via-slate-900/90 to-cyan-950/80 p-5 shadow-glass backdrop-blur-xl flex flex-col gap-3 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-2xl rounded-full pointer-events-none" />
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-neon-blue shrink-0">
+                  <Sparkles className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-100">Registration Fee: 3,550 BDT</h3>
+                  <p className="text-xs text-slate-400">Official Delegate Participation Fee</p>
+                </div>
+              </div>
+              <div className="flex items-baseline gap-1.5 self-start sm:self-auto bg-slate-950/80 border border-cyan-500/30 px-3.5 py-1.5 rounded-xl shadow-inner">
+                <span className="text-xl font-extrabold font-mono text-cyan-400">3,550</span>
+                <span className="text-xs font-bold text-slate-300">BDT</span>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-2.5 text-xs text-indigo-200 leading-relaxed bg-indigo-950/50 border border-indigo-800/50 p-3 rounded-xl">
+              <Award className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+              <div>
+                <span className="font-bold text-slate-100">🔥 Bring More Friends & Get Delegation Scholarship: </span>
+                If we bring more delegates into our campus delegation, we will secure group scholarship benefits! Invite your friends and classmates to register together with us.
+              </div>
+            </div>
           </div>
 
           {/* Envoy Card in Rich Dark Glass Tint */}
