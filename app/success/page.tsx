@@ -79,7 +79,7 @@ function SuccessContent() {
 
           <div className="flex items-start justify-between">
             <span className="text-slate-400 font-medium">Registration Fee</span>
-            <span className="font-mono font-bold text-cyan-400 text-right">3,550 BDT</span>
+            <span className="font-mono font-bold text-cyan-400 text-right">3,050 BDT</span>
           </div>
 
           <div className="flex items-start justify-between">
@@ -100,7 +100,7 @@ function SuccessContent() {
           </div>
 
           <div className="mt-1 p-2.5 rounded-xl bg-indigo-950/40 border border-indigo-800/40 text-[11px] text-indigo-200 leading-relaxed">
-            <strong className="text-slate-100">🔥 Bring More Friends:</strong> If more delegates join our campus delegation, we will secure group scholarship benefits for our members!
+            <strong className="text-slate-100">Delegation Perk:</strong> If more delegates join our campus delegation, we will secure group scholarship benefits for our members!
           </div>
         </div>
       </div>

@@ -70,7 +70,7 @@ export default function HomePage() {
               8–10 October 2026
             </span>
             <span className="badge bg-cyan-950/60 border border-cyan-700/50 text-cyan-300 shadow-xs font-mono font-bold">
-              Fee: 3,550 BDT
+              Fee: 3,050 BDT
             </span>
             <span className="badge bg-purple-950/60 border border-purple-700/50 text-purple-300 shadow-xs">
               <Award className="w-3.5 h-3.5 text-purple-400" />
@@ -97,7 +97,7 @@ export default function HomePage() {
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-100">Registration Fee: 3,550 BDT</h3>
+                  <h3 className="text-sm font-bold text-slate-100">Registration Fee: 3,050 BDT</h3>
                   <div className="flex items-center gap-2 mt-0.5">
                     <span className="text-xs text-slate-400">Official Delegate Participation Fee</span>
                     <span className="text-slate-600">·</span>
@@ -109,7 +109,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex items-baseline gap-1.5 self-start sm:self-auto bg-slate-950/80 border border-cyan-500/30 px-3.5 py-1.5 rounded-xl shadow-inner">
-                <span className="text-xl font-extrabold font-mono text-cyan-400">3,550</span>
+                <span className="text-xl font-extrabold font-mono text-cyan-400">3,050</span>
                 <span className="text-xs font-bold text-slate-300">BDT</span>
               </div>
             </div>
