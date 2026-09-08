@@ -36,6 +36,9 @@ export interface DelegationRecord {
   updated_at: string
 }
 
+const DEFAULT_NEON_URL =
+  'postgresql://neondb_owner:npg_2WOSwBL5oFAP@ep-curly-butterfly-aoekufnp-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require'
+
 function ensureLocalStore(): DelegationRecord[] {
   try {
     if (!fs.existsSync(DATA_DIR)) {
@@ -63,10 +66,21 @@ function saveLocalStore(records: DelegationRecord[]) {
   }
 }
 
+function getConnectionString(): string {
+  if (process.env.DATABASE_URL) {
+    if (
+      (process.env.VERCEL || process.env.NODE_ENV === 'production') &&
+      process.env.DATABASE_URL.includes('localhost')
+    ) {
+      return DEFAULT_NEON_URL
+    }
+    return process.env.DATABASE_URL
+  }
+  return DEFAULT_NEON_URL
+}
+
 function createPool(): Pool {
-  const connectionString =
-    process.env.DATABASE_URL ||
-    'postgres://kumun:kumun2026@localhost:5432/kumun_delegation'
+  const connectionString = getConnectionString()
 
   const isRemoteDb =
     connectionString.includes('neon.tech') ||
@@ -80,7 +94,7 @@ function createPool(): Pool {
     connectionString,
     max: 10,
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 3000,
+    connectionTimeoutMillis: 10000,
     ssl: isRemoteDb ? { rejectUnauthorized: false } : false,
   })
 }
